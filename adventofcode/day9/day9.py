@@ -43,7 +43,7 @@ def part1(hDIRS, tDIRS, head, tail):
    return visitedTail
 
 # move the tail in respect to the given head
-def moveTail(tDIRS, head, tail, visitedTail, pos=0):
+def moveTail(tDIRS, head, tail, visitedTail, pos=8): #default 8 for part1?
    # check head surrounding; is tail touching
    for dr, dc in tDIRS:
       nr, nc = head[0] + dr, head[1] + dc

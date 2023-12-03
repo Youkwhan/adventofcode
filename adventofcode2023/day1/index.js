@@ -10,8 +10,10 @@ function main(fileName) {
 			const sum = processedData.reduce((acc, cur) => acc + cur, 0)
 			console.log("PartOne Sum:", sum)
 
-			const sumPartTwo = partTwo(parsedData)
-			console.log("Part Two Sum:", sumPartTwo)
+			const partTwoData = partTwo(parsedData)
+			const sumPartTwo = partOne(partTwoData)
+			const sum2 = sumPartTwo.reduce((acc, cur) => acc + cur, 0)
+			console.log("Part Two Sum:", sum2)
 		}
 	})
 	// function: grab the numbers
@@ -25,9 +27,29 @@ function main(fileName) {
 		})
 	}
 
-	function partTwo(data) {}
+	function partTwo(data) {
+		const wordMatch = {
+			zero: "z0ro",
+			one: "o1e",
+			two: "t2o",
+			three: "th3ee",
+			four: "fo4r",
+			five: "f5ve",
+			six: "s6x",
+			seven: "s7ven",
+			eight: "e8ght",
+			nine: "n9ne",
+		}
+		return data.map((line) => {
+			for (word in wordMatch) {
+				const pattern = new RegExp(word, "g")
+				line = line.replace(pattern, wordMatch[word])
+			}
+			return line
+		})
+	}
 }
 
 // main("./example.txt")
 main("./example2.txt")
-// main("./input.txt")
+main("./input.txt")
